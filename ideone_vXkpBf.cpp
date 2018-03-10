@@ -116,7 +116,6 @@ int main()
 		ans.push_back({ cont[A[i]]*-1, A[i] });
 	}
 	sort(all(ans));
-	//reverse(all(ans));
 	for (int i = 0; i < ans.size(); i++)
 	{
 		cout << ans[i].second << ": " << ans[i].first*-1 << endl;
