@@ -37,45 +37,25 @@ void fast()
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 }
 // Run away as you wish, you are always traveling between my ribs.
-vector<int>v;
-int m;
-bool chk(int x)
-{
-	int cn = m, sum = 0;
-	int i = 0;
-	for (; i < v.size()&&cn; i++)
-	{
-		if (sum + v[i] <= x)
-			sum += v[i];
-		else
-		{
-			cn--;
-			sum = 0;
-			i--;
-		}
-	}
-	return i == v.size();
-}
 int  main()
 {
 	fast();
 	run();
-	int n;
-	while (cin >> n >> m)
+	int t;
+	cin >> t;
+	while (t--)
 	{
-		v.resize(n);
+		int n;
+		cin >> n;
+		vector<int>v(n);
 		for (int i = 0; i < n; i++)
 			cin >> v[i];
-		int st = 0, en = 1e9, mid, ans = 1e9;
-		while (st <= en)
+		int ans = 0;
+		for (int i = 0; i < n; i++)
 		{
-			mid = (st + en) / 2;
-			if (mid == 13)
-				mid = mid;
-			if (chk(mid))
-				ans = min(ans, mid), en = mid - 1;
-			else
-				st = mid + 1;
+			for (int j = 0; j < i;j++)
+			if (v[i] >= v[j])
+				ans++;
 		}
 		cout << ans << endl;
 	}
